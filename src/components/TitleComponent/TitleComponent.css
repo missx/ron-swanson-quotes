@@ -1,0 +1,8 @@
+.TitleComponent {
+    height: 100%;
+}
+
+.TitleComponent-title {
+    vertical-align: middle;
+    padding: 5% 0;
+}
