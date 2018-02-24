@@ -5,12 +5,13 @@
 
 .App-header {
   background-color: #331E38;
-  height: 200px;
+  height: 250px;
   padding: 20px;
-  color: #A0C1B9;
+  color: #6DA34D;
 }
 
 .App-intro {
   font-size: large;
   background-color: #70A0AF;
+  height: 400px;
 }

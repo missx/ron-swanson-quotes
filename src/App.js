@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import TitleComponent from './components/TitleComponent/TitleComponent.js';
+import ButtonComponent from './components/ButtonComponent/ButtonComponent.js';
+
 import './App.css';
 
 
@@ -20,7 +22,7 @@ class App extends Component {
           <TitleComponent title={this.state.title}/>
         </header>
         <div className="App-intro">
-          
+          <ButtonComponent/>
         </div>
       </div>
     );

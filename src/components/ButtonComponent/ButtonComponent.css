@@ -1,0 +1,8 @@
+.ButtonComponent {
+    background-color: #6DA34D !important;
+    margin: 50px;
+}
+
+.ButtonComponent:hover{
+    border-color: #6DA34D !important;
+}
