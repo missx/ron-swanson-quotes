@@ -5,7 +5,8 @@ import './ButtonComponent.css';
 
 function ButtonComponent(props) {
     return (
-        <Button bsStyle="default" bsSize="large" className="ButtonComponent">
+        <Button bsStyle="default" bsSize="large" className="ButtonComponent"
+            onClick={props.onClickQuote}>
             Get Your Quote!
         </Button>
     );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import TitleComponent from './components/TitleComponent/TitleComponent.js';
 import ButtonComponent from './components/ButtonComponent/ButtonComponent.js';
+import QuoteComponent from './components/QuoteComponent/QuoteComponent.js';
 
 import './App.css';
 
@@ -11,8 +12,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'Get your Ron Swanson\'s Quote!'
+      title: 'Get your Ron Swanson\'s Quote!',
+      quote: ''
     }
+    this.getQuote = this.getQuote.bind(this);
+  }
+
+  getQuote() {
+    fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+    .then((response) => {
+      return response.json();
+    }).then((quote) => {
+      this.setState({
+        quote
+      });
+    });
   }
 
   render() {
@@ -22,7 +36,8 @@ class App extends Component {
           <TitleComponent title={this.state.title}/>
         </header>
         <div className="App-intro">
-          <ButtonComponent/>
+          <ButtonComponent onClickQuote={this.getQuote}/>
+          <QuoteComponent quote={this.state.quote} />
         </div>
       </div>
     );
