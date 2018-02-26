@@ -16,15 +16,20 @@ class App extends Component {
       quote: ''
     }
     this.getQuote = this.getQuote.bind(this);
+    this.disableButton = false;
   }
 
   getQuote() {
+    this.setState({
+      disableButton: true
+    });
     fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
     .then((response) => {
       return response.json();
     }).then((quote) => {
       this.setState({
-        quote
+        quote,
+        disableButton: false
       });
     });
   }
@@ -36,7 +41,7 @@ class App extends Component {
           <TitleComponent title={this.state.title}/>
         </header>
         <div className="App-intro">
-          <ButtonComponent onClickQuote={this.getQuote}/>
+          <ButtonComponent onClickQuote={this.getQuote} disabled={this.state.disableButton}/>
           <QuoteComponent quote={this.state.quote} />
         </div>
       </div>

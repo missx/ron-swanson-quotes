@@ -4,18 +4,20 @@ import { Grid, Row, Col, Image } from 'react-bootstrap';
 import './QuoteComponent.css';
 
 function QuoteComponent(props) {
-    return (
-        <Grid className="QuoteComponent">
+
+    let showQuote = 
+        (<Grid className="QuoteComponent">
             <Row>
-                <Col xs={12} sm={2} >
-                    <Image src="../../utils/images/ron-approves.jpg" circle responsive/>
+                <Col xs={12} sm={2} smOffset={1}>
+                    <Image src={require("../../utils/images/ron-approves.jpg")} circle responsive/>
                 </Col>
-                <Col xs={12} sm={10} >
+                <Col xs={12} sm={8} className="QuoteComponent-quote">
                     <p>{props.quote}</p>
-                </Col>                
+                </Col>
             </Row>
-        </Grid>
-    );
+        </Grid>);
+
+    return (props.quote) ? showQuote : <div></div>;
 }
 
 export default QuoteComponent;

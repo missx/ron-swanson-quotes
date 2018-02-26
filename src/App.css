@@ -13,5 +13,5 @@
 .App-intro {
   font-size: large;
   background-color: #70A0AF;
-  height: 400px;
+  height: -webkit-fill-available;
 }

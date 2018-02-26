@@ -6,7 +6,7 @@ import './ButtonComponent.css';
 function ButtonComponent(props) {
     return (
         <Button bsStyle="default" bsSize="large" className="ButtonComponent"
-            onClick={props.onClickQuote}>
+            onClick={props.onClickQuote} disabled={props.disabled}>
             Get Your Quote!
         </Button>
     );
