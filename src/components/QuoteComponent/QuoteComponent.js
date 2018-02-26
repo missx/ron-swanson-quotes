@@ -1,23 +1,29 @@
 import React from 'react';
-import { Grid, Row, Col, Image } from 'react-bootstrap'; 
+import { Image } from 'react-bootstrap'; 
 
 import './QuoteComponent.css';
 
 function QuoteComponent(props) {
 
     let showQuote = 
-        (<Grid className="QuoteComponent">
-            <Row>
-                <Col xs={12} sm={2} smOffset={1}>
-                    <Image src={require("../../utils/images/ron-approves.jpg")} circle responsive/>
-                </Col>
-                <Col xs={12} sm={8} className="QuoteComponent-quote">
+        (<div className="QuoteComponent">
+            <div>
+                {(props.isRon) ?
+                <Image src={require("../../utils/images/ron-approves.jpg")} circle responsive className="QuoteComponent-img"/> :
+                <Image src={require("../../utils/images/knope.png")} circle responsive className="QuoteComponent-img"/>}                
+            </div>
+            <div>
+                <div className="QuoteComponent-quote">
                     <p>{props.quote}</p>
-                </Col>
-            </Row>
-        </Grid>);
+                </div>
+            </div>
+        </div>);
 
-    return (props.quote) ? showQuote : <div></div>;
+    return (props.quote) 
+    ? showQuote 
+    : <div className="QuoteComponent-quote">
+        Find out what Ron has to say!
+    </div>;
 }
 
 export default QuoteComponent;

@@ -13,7 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       title: 'Get your Ron Swanson\'s Quote!',
-      quote: ''
+      quote: '',
+      isRon: true
     }
     this.getQuote = this.getQuote.bind(this);
     this.disableButton = false;
@@ -23,15 +24,30 @@ class App extends Component {
     this.setState({
       disableButton: true
     });
-    fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
-    .then((response) => {
-      return response.json();
-    }).then((quote) => {
-      this.setState({
-        quote,
-        disableButton: false
+
+    let randomNumber = Math.floor(Math.random() * 10) + 1;
+    const leslieNumber = 7;
+    
+    if (randomNumber !== leslieNumber) {
+      
+      fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+      .then((response) => {
+        return response.json();
+      }).then((quote) => {
+        this.setState({
+          quote,
+          disableButton: false,
+          isRon: true
+        });        
       });
-    });
+    } else {
+      const leslieQuote = 'You know my code, hoes before bros. Uteruses before duderuses. Ovaries before brovaries.';
+      this.setState({
+        quote: leslieQuote,
+        disableButton: false,
+        isRon: false
+      });      
+    }
   }
 
   render() {
@@ -42,7 +58,7 @@ class App extends Component {
         </header>
         <div className="App-intro">
           <ButtonComponent onClickQuote={this.getQuote} disabled={this.state.disableButton}/>
-          <QuoteComponent quote={this.state.quote} />
+          <QuoteComponent quote={this.state.quote} isRon={this.state.isRon}/>
         </div>
       </div>
     );
